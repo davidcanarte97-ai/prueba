@@ -4,27 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Campo de girasoles</title>
-
-  <!-- Manifest para PWA -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#ff8c42">
-
   <style>
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(to top, #ff8c42, #ffcc70);
+      background: linear-gradient(to top, #ff8c42, #ffcc70); /* Atardecer */
+      overflow: hidden;
       font-family: Arial, sans-serif;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
     }
 
-    /* Campo */
+    /* Campo de girasoles */
     .field {
-      position: relative;
+      position: absolute;
+      bottom: 0;
       width: 100%;
       height: 65%;
       background: #228B22;
@@ -55,13 +47,7 @@
       100% { transform: rotate(0deg); }
     }
 
-    /* Fotos polaroid */
-    .photos {
-      position: absolute;
-      top: 10px;
-      width: 100%;
-    }
-
+    /* Polaroids */
     .polaroid {
       position: absolute;
       background: #f8f1e1;
@@ -93,67 +79,83 @@
       margin-top: 5px;
     }
 
-    .p1 { left: 5%; top: 50px; transform: rotate(-6deg); }
-    .p2 { right: 5%; top: 100px; transform: rotate(5deg); }
-    .p3 { left: 50%; top: 180px; transform: translateX(-50%) rotate(-2deg); }
+    .p1 { bottom: 50px; left: 5%; transform: rotate(-6deg); }
+    .p2 { bottom: 120px; right: 5%; transform: rotate(5deg); }
+    .p3 { bottom: 70px; left: 50%; transform: translateX(-50%) rotate(-2deg); }
 
-    /* Responsivo móvil */
+    /* Responsivo para smartphone */
     @media (max-width: 600px) {
-      .photos {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        top: 0;
-      }
-
       .polaroid {
-        position: relative;
-        width: 130px;
-        height: 160px;
+        width: 120px;
+        height: 150px;
         border: 6px solid #8b5a2b;
         border-bottom: 25px solid #8b5a2b;
-        transform: none !important;
       }
 
       .caption {
         font-size: 12px;
       }
+
+      .p1, .p2, .p3 {
+        bottom: auto;
+        top: 10px;
+        transform: rotate(0deg) !important;
+      }
+
+      .p1 { left: 10%; top: 10px; }
+      .p2 { right: 10%; top: 10px; }
+      .p3 { left: 50%; top: 180px; transform: translateX(-50%) !important; }
     }
   </style>
 </head>
 <body>
-  <!-- Fotos -->
-  <div class="photos">
-    <div class="polaroid p1">
-      <img src="1.png" alt="Foto 1">
-      <div class="caption">Te amo mi amor 💖</div>
-    </div>
-    <div class="polaroid p2">
-      <img src="2.png" alt="Foto 2">
-      <div class="caption">Te amo mi amor 💖</div>
-    </div>
-    <div class="polaroid p3">
-      <img src="3.png" alt="Foto 3">
-      <div class="caption">Te amo mi amor 💖</div>
-    </div>
-  </div>
-
   <!-- Campo -->
   <div class="field">
+    <!-- Girasoles (igual que antes, varias filas) -->
     <div class="sunflower" style="left:5%; bottom:0; width:90px; height:90px;"></div>
+    <div class="sunflower" style="left:15%; bottom:0; width:80px; height:80px;"></div>
     <div class="sunflower" style="left:25%; bottom:0; width:100px; height:100px;"></div>
+    <div class="sunflower" style="left:35%; bottom:0; width:85px; height:85px;"></div>
     <div class="sunflower" style="left:45%; bottom:0; width:95px; height:95px;"></div>
+    <div class="sunflower" style="left:55%; bottom:0; width:85px; height:85px;"></div>
     <div class="sunflower" style="left:65%; bottom:0; width:100px; height:100px;"></div>
+    <div class="sunflower" style="left:75%; bottom:0; width:90px; height:90px;"></div>
     <div class="sunflower" style="left:85%; bottom:0; width:95px; height:95px;"></div>
+
+    <!-- Segunda fila -->
+    <div class="sunflower" style="left:10%; bottom:60px; width:60px; height:60px;"></div>
+    <div class="sunflower" style="left:22%; bottom:60px; width:55px; height:55px;"></div>
+    <div class="sunflower" style="left:34%; bottom:60px; width:65px; height:65px;"></div>
+    <div class="sunflower" style="left:46%; bottom:60px; width:55px; height:55px;"></div>
+    <div class="sunflower" style="left:58%; bottom:60px; width:60px; height:60px;"></div>
+    <div class="sunflower" style="left:70%; bottom:60px; width:65px; height:65px;"></div>
+    <div class="sunflower" style="left:82%; bottom:60px; width:55px; height:55px;"></div>
+
+    <!-- Tercera fila -->
+    <div class="sunflower" style="left:8%; bottom:120px; width:40px; height:40px;"></div>
+    <div class="sunflower" style="left:20%; bottom:120px; width:35px; height:35px;"></div>
+    <div class="sunflower" style="left:32%; bottom:120px; width:40px; height:40px;"></div>
+    <div class="sunflower" style="left:44%; bottom:120px; width:35px; height:35px;"></div>
+    <div class="sunflower" style="left:56%; bottom:120px; width:40px; height:40px;"></div>
+    <div class="sunflower" style="left:68%; bottom:120px; width:35px; height:35px;"></div>
+    <div class="sunflower" style="left:80%; bottom:120px; width:40px; height:40px;"></div>
   </div>
 
-  <script>
-    // Registrar service worker
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js");
-    }
-  </script>
+  <!-- Polaroids -->
+  <div class="polaroid p1">
+    <img src="1.png" alt="Foto 1">
+    <div class="caption">Te amo mi amor 💖</div>
+  </div>
+
+  <div class="polaroid p2">
+    <img src="2.png" alt="Foto 2">
+    <div class="caption">Te amo mi amor 💖</div>
+  </div>
+
+  <div class="polaroid p3">
+    <img src="3.png" alt="Foto 3">
+    <div class="caption">Te amo mi amor 💖</div>
+  </div>
 </body>
 </html>
+
