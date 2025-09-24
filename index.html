@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campo de girasoles</title>
+
+  <!-- Manifest para PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ff8c42">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to top, #ff8c42, #ffcc70);
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    /* Campo */
+    .field {
+      position: relative;
+      width: 100%;
+      height: 65%;
+      background: #228B22;
+      overflow: hidden;
+    }
+
+    .sunflower {
+      position: absolute;
+      border-radius: 50%;
+      background: yellow;
+      animation: sway 4s infinite ease-in-out;
+    }
+
+    .sunflower::after {
+      content: "";
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      width: 60%;
+      height: 60%;
+      background: brown;
+      border-radius: 50%;
+    }
+
+    @keyframes sway {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(6deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* Fotos polaroid */
+    .photos {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+    }
+
+    .polaroid {
+      position: absolute;
+      background: #f8f1e1;
+      border: 8px solid #8b5a2b;
+      border-bottom: 35px solid #8b5a2b;
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+      width: 160px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 4px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .polaroid img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      flex: 1;
+    }
+
+    .caption {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-size: 14px;
+      color: #5b2c00;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .p1 { left: 5%; top: 50px; transform: rotate(-6deg); }
+    .p2 { right: 5%; top: 100px; transform: rotate(5deg); }
+    .p3 { left: 50%; top: 180px; transform: translateX(-50%) rotate(-2deg); }
+
+    /* Responsivo móvil */
+    @media (max-width: 600px) {
+      .photos {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        top: 0;
+      }
+
+      .polaroid {
+        position: relative;
+        width: 130px;
+        height: 160px;
+        border: 6px solid #8b5a2b;
+        border-bottom: 25px solid #8b5a2b;
+        transform: none !important;
+      }
+
+      .caption {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fotos -->
+  <div class="photos">
+    <div class="polaroid p1">
+      <img src="1.png" alt="Foto 1">
+      <div class="caption">Te amo mi amor 💖</div>
+    </div>
+    <div class="polaroid p2">
+      <img src="2.png" alt="Foto 2">
+      <div class="caption">Te amo mi amor 💖</div>
+    </div>
+    <div class="polaroid p3">
+      <img src="3.png" alt="Foto 3">
+      <div class="caption">Te amo mi amor 💖</div>
+    </div>
+  </div>
+
+  <!-- Campo -->
+  <div class="field">
+    <div class="sunflower" style="left:5%; bottom:0; width:90px; height:90px;"></div>
+    <div class="sunflower" style="left:25%; bottom:0; width:100px; height:100px;"></div>
+    <div class="sunflower" style="left:45%; bottom:0; width:95px; height:95px;"></div>
+    <div class="sunflower" style="left:65%; bottom:0; width:100px; height:100px;"></div>
+    <div class="sunflower" style="left:85%; bottom:0; width:95px; height:95px;"></div>
+  </div>
+
+  <script>
+    // Registrar service worker
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</body>
+</html>
